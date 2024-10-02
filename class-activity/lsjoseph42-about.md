@@ -1,6 +1,8 @@
 # About Me
 
-I have dual citizenship! 
+1. I have dual citizenship! 
+
+2. I have a dog.
 
 - Lucas
 
