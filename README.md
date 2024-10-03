@@ -6,3 +6,5 @@ template repo for class activity on git and github in pstat197a
 updated October 2024
 
 Lucas Joseph
+
+Ivan Li
