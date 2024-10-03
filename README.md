@@ -8,3 +8,4 @@ updated October 2024
 Lucas Joseph
 Sean Reagan
 Ivan Li
+Daniel Yan
