@@ -1,0 +1,10 @@
+---
+title: "new_markdown"
+output: html_document
+date: "2024-10-03"
+---
+
+```{r}
+# Hello my name is Ivan
+```
+
