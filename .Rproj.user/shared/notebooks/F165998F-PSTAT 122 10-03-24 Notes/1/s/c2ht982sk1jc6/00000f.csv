@@ -1,0 +1,3 @@
+"0","CI_95lower <- y_bar - qt(0.025, df=4, lower.tail=FALSE) * S/sqrt(5)"
+"0",""
+"0","CI_95upper <- y_bar + qt(0.025, df=4, lower.tail=FALSE) * S/sqrt(5)"

@@ -1,0 +1,5 @@
+"0","# Construct a 95% confidence interval for the mean difference"
+"0",""
+"0","CI_95lower <- d_bar - qt(0.025, df=4, lower.tail=FALSE) * S/sqrt(5)"
+"0",""
+"0","CI_95upper <- d_bar + qt(0.025, df=4, lower.tail=FALSE) * S/sqrt(5)"

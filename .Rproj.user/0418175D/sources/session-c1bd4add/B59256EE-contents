@@ -1,0 +1,147 @@
+---
+title: "Lab 1"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+date: "2024-10-01"
+---
+
+### 1) Your Turns
+
+
+##### a) Slide 6
+```{r}
+x <- c(10, 12, 5, 14, 35)
+print(x)
+mean(x)
+var(x)
+```
+The mean of `x` is `r mean(x)`.
+
+##### b) Slide 10
+
+```{r}
+reps <- 10
+output <- NA
+
+for (i in 1:reps){
+  new_samp <- sample(x, size=5,replace = TRUE, prob=NULL)
+  output[i] <- mean(new_samp)
+}
+
+print(output)
+```
+##### c) Slide 17
+
+```{r}
+# create new sampling function
+sample_function <- function(vector){
+  samples <- sample(vector, size=3, replace=FALSE, prob=NULL)
+  sd(samples)
+}
+
+# Test Function
+sample_function(x)
+```
+
+### 2) Read in data from an external file
+
+```{r}
+# load library
+library(readr)
+
+# Load in data
+dog_data_cleaned <- read_csv("~/dog_data_cleaned.csv")
+```
+
+
+##### a) Some minor data wrangling
+
+```{r}
+library(dplyr)
+# Filter data so only "pre" stages are present
+dog_data_pre_only <- dog_data_cleaned %>% filter(Stage=="pre")
+head(dog_data_pre_only)
+```
+
+##### b) Descriptive statistics
+
+```{r}
+# load library
+library(knitr)
+
+# Compute summary statistics
+age_yrs_stats <- dog_data_pre_only %>% 
+  summarize(
+    n = n(),
+    x_bar = mean(Age_Yrs),
+    stdev = sd(Age_Yrs),
+  )
+
+# Put results into kable
+age_yrs_stats %>% 
+  kable(col.names = c("n","Mean","Stdev"))
+```
+
+##### c) Basic Data Visualization
+
+```{r}
+# Base plotting
+
+hist(dog_data_pre_only$Age_Yrs, 
+     xlab="Age (years)",
+     main="Age of Study Participants")
+```
+
+```{r}
+# ggplot2 plotting
+library(ggplot2)
+
+ggplot(data = dog_data_pre_only, mapping=aes(x=Age_Yrs)) +
+  geom_histogram(bins=10) +
+  xlab("Age (years)") +
+  ggtitle("Age of Study Participants")
+```
+
+### 3) Repeat on another dataset
+
+```{r}
+# load library
+
+library(nycflights13)
+```
+
+##### a) Data wrangling
+```{r}
+# Filter to keep only origin JFK rows
+
+flights_origin_JFK <- flights %>% filter(origin == "JFK")
+head(flights_origin_JFK)
+```
+
+##### b) Summary Statistics
+
+```{r}
+# Compute summary statistics and put into kable
+
+air_time_stats <- flights_origin_JFK %>% 
+  summarize(
+    n = n(),
+    x_bar = mean(air_time, na.rm=TRUE),
+    stdev = sd(air_time, na.rm=TRUE)
+  )
+air_time_stats %>%
+   kable(col.names = c("n","Mean","Stdev"))
+```
+
+##### c) Data Vizualization
+
+```{r}
+# Create histogram with base and ggplot2
+
+# Base plotting
+hist(flights_origin_JFK$air_time,
+     xlab="Air Time",
+     main="Air time of flights from JFK")
+```
