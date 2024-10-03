@@ -1,3 +1,3 @@
 ## About me
 
-1. I have 3 dogs
+1.  I have 3 dogs
